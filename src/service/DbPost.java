@@ -80,7 +80,7 @@ public class DbPost {
 	
 	public static List<Bhpost> postOfUser(long userid){
 		EntityManager em = DbUtil.getEntityManager("Bullhorn");
-		String qString = "Select u from Bhpost u where u.bhuser.bhuserid =: userid";
+		String qString = "Select u from Bhpost u where u.bhuser.bhuserid = :userid";
 		List<Bhpost> userposts = null;
 		
 		try {
@@ -101,7 +101,7 @@ public class DbPost {
 	
 	public static List<Bhpost> postOfUser(String email){
 		EntityManager em = DbUtil.getEntityManager("Bullhorn");
-		String qString = "Select u from Bhpost u where u.bhuser.useremail =: email";
+		String qString = "Select u from Bhpost u where u.bhuser.useremail = :email";
 		List<Bhpost> userposts = null;
 		
 		try {
@@ -121,7 +121,7 @@ public class DbPost {
 	
 	public static List<Bhpost> searchPosts(String search){
 		EntityManager em = DbUtil.getEntityManager("Bullhorn");
-		String qString = "Select u from Bhpost u where u.posttext like =: search";
+		String qString = "Select u from Bhpost u where u.posttext like = :search";
 		List<Bhpost> posts = null;
 		
 		try {

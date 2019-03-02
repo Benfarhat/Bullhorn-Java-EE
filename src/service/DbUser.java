@@ -72,7 +72,7 @@ public class DbUser {
 	
 	public static Bhuser getUserByEmail(String email) {
 		EntityManager em = DbUtil.getEntityManager("Bullhorn");
-		String qString = "Select u from Bhuser u where u.useremail =: useremail";
+		String qString = "Select u from Bhuser u where u.useremail = :useremail";
 		TypedQuery<Bhuser> q = em.createQuery(qString, Bhuser.class);
 		q.setParameter("useremail", email);
 		Bhuser user = null;
@@ -92,9 +92,7 @@ public class DbUser {
 	
 	public static boolean isValideUser(String userEmail, String userPassword) {
 		EntityManager em = DbUtil.getEntityManager("Bullhorn");
-		String qString = "Select count(b.bhuserid) from Bhuser b"
-				+ "where b.useremail =: useremail "
-				+ "and b.userpassword =: userpass";
+        String qString = "Select count(b.bhuserid) from Bhuser b where b.useremail = :useremail and b.userpassword = :userpass";
 		TypedQuery<Long> q = em.createQuery(qString, Long.class);
 		q.setParameter("useremail", userEmail);
 		q.setParameter("userpass", userPassword);
