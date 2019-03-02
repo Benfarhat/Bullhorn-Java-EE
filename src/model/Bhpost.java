@@ -15,8 +15,8 @@ public class Bhpost implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int postid;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long postid;
 
 	@Temporal(TemporalType.DATE)
 	private Date postdate;
@@ -31,7 +31,7 @@ public class Bhpost implements Serializable {
 	public Bhpost() {
 	}
 
-	public int getPostid() {
+	public long getPostid() {
 		return this.postid;
 	}
 

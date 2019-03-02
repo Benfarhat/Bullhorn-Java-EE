@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +23,7 @@ import service.DbPost;
 @WebServlet("/PostServ")
 public class PostServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOG = Logger.getLogger(PostServ.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -48,9 +51,14 @@ public class PostServ extends HttpServlet {
 		String posttext = request.getParameter("posttext");
 		String nextURL = "/error.jsp";
 		
+		System.out.println(posttext);
+		LOG.log(Level.INFO, posttext);
+		
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("user") == null) {
+		    
+		    System.out.println("Invalid user, redirect to login");
 			nextURL = "/login.jsp";
 			session.invalidate();
 		} else {
@@ -64,11 +72,12 @@ public class PostServ extends HttpServlet {
 			bhPost.setPostdate(postdate);
 			bhPost.setPosttext(posttext);
 			DbPost.insert(bhPost);
+			System.out.println("New post created!");
 			
 			nextURL = "/Newsfeed";
-			getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 			
 		}
+		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}
 
 }

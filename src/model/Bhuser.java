@@ -16,8 +16,8 @@ public class Bhuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int bhuserid;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long bhuserid;
 
 	@Temporal(TemporalType.DATE)
 	private Date joindate;
@@ -37,7 +37,7 @@ public class Bhuser implements Serializable {
 	public Bhuser() {
 	}
 
-	public int getBhuserid() {
+	public long getBhuserid() {
 		return this.bhuserid;
 	}
 

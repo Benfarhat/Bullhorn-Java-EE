@@ -43,8 +43,9 @@
     <div class="row">
         <div class="starter-template">
             <h1>Login</h1>
-
+			
             <form class="form-signin" method="post" action="LoginServlet">
+            	<small>${ message } Please Sign in</small>
             	<label for="inputEmail" class="sr-only">Email address</label>
             	<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus/>
             	<input type="hidden" name="action" id="action" value="login"/>

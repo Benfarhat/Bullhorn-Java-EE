@@ -42,13 +42,19 @@
 <div class="container">
     <div class="row">
         <div class="starter-template">
-            <h1>Bullhorn Messaging App</h1>
+            <h1>Bullhorn Messaging App - HomePage</h1>
 
-            <p class="lead">Using GET Method to Read from data</p>
-			<ul>
-				<li><p><b>First Name:</b> ${firstName} </p></li>
-				<li><p><b>Last Name:</b> ${lastName} </p></li>
-			</ul>
+            <form role="form" class="form-signin" method="post" action="PostServ" onsubmit="return validate(this)">
+            	<div class="form-group">
+	            	<label for="posttext" class="sr-only">Create New Post (141 char):</label>
+	            	<textarea name="posttext" id="posttext" class="form-control" rows="2" placeholder="Express yourself!" maxlength="141"></textarea>
+	            	<div id="textarea_feedback"></div>
+            	</div>
+            	<div class="form-group">
+	            	<input type="submit" value="Submit" id="submit"/>
+	            	<input type="reset" value="Clear"/>
+            	</div>
+            </form>
         </div>
     </div>
     <!-- /.row -->
@@ -56,5 +62,35 @@
 <!-- /.container -->
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+	var text_max = 141;
+	var ta = $('#textarea_feedback');
+	var pt = $('#posttext');
+	
+
+	var text_length = pt.val().length;
+	var text_remaining = text_max - text_length;
+	
+	ta.html(text_remaining + " characters remaining");
+	
+
+	pt.keyup(function(){
+		var text_length = pt.val().length;
+		var text_remaining = text_max - text_length;
+		
+		ta.html(text_remaining + " characters remaining");
+	});
+});
+
+function validate(form){
+	valid = true;
+	if($('#posttext').val().length == 0 ){
+		alert("You may not submit an empty post.");
+		valid = false;
+	}
+	return valid;
+}
+</script>
 </body>
 </html>
