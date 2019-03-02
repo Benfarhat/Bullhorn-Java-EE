@@ -4,6 +4,19 @@
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
+  
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+  
+  <error-page>
+  	<!-- <error-code>404</error-code> -->
+  	<location>/error.jsp</location>
+  </error-page>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
